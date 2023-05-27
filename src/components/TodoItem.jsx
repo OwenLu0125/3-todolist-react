@@ -100,7 +100,13 @@ const StyledTaskItem = styled.div`
   }
 `;
 
-const TodoItem = () => {
+const TodoItem = (
+  todo,  // 帶進資料
+  onToggleDone, // 是否完成的狀態
+  onSave, // 儲存資料
+  onDelete, // 刪除
+  onChangeMode, // 切換成編輯狀態
+  ) => {
   return (
     <StyledTaskItem>
       <div className="task-item-checked">
