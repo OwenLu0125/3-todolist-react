@@ -25,16 +25,36 @@ const dummyTodos = [
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
-  const [todos, setRodos] = useState(dummyTodos)
+  const [todos, setTodos] = useState(dummyTodos);
 
   const handleInput = (value) => {
-    setInputValue(value)
+    setInputValue(value);
+  };
+
+  const handleTodo = () => {
+    if (inputValue.length === 0) {
+      return;
+    }
+    setTodos((prevTodos) => {
+      return [
+        ...prevTodos,
+        {
+          id: Math.random() * 100,
+          title: inputValue,
+          isDone: false,
+        },
+      ];
+    });
   };
   return (
     <div>
       TodoPage
       <Header />
-      <TodoInput inputValue={inputValue} onChange={handleInput} />
+      <TodoInput
+        inputValue={inputValue}
+        onChange={handleInput}
+        onAddTodo={handleTodo}
+      />
       <TodoCollection todos={todos} />
       <Footer />
     </div>
