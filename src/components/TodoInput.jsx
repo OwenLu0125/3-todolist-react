@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import clsx from 'clsx';
 const StyledAddTodoContainer = styled.div`
   min-height: 52px;
   display: flex;
@@ -69,7 +69,9 @@ const StyledAddTodoActionContainer = styled.div`
 `;
 const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
   return (
-    <StyledAddTodoContainer>
+    <StyledAddTodoContainer
+      className={clsx('', { active: inputValue.lenth > 0 })}
+    >
       <StyledLabelIcon className="icon" htmlFor="add-todo-input" />
       <StyledInputContainer>
         <input
@@ -87,7 +89,9 @@ const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
           }}
         />
       </StyledInputContainer>
-      <StyledAddTodoActionContainer>
+      <StyledAddTodoActionContainer
+        className={clsx('', { active: inputValue.lenth > 0 })}
+      >
         <button className="btn-reset" onClick={() => onAddTodo?.()}>
           新增
         </button>
