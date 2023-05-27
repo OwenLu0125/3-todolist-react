@@ -70,7 +70,7 @@ const StyledAddTodoActionContainer = styled.div`
 const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
   return (
     <StyledAddTodoContainer
-      className={clsx('', { active: inputValue.lenth > 0 })}
+      className={clsx('', { active: inputValue.length > 0 })}
     >
       <StyledLabelIcon className="icon" htmlFor="add-todo-input" />
       <StyledInputContainer>
@@ -90,7 +90,7 @@ const TodoInput = ({ inputValue, onChange, onKeyDown, onAddTodo }) => {
         />
       </StyledInputContainer>
       <StyledAddTodoActionContainer
-        className={clsx('', { active: inputValue.lenth > 0 })}
+        className={clsx('', { active: inputValue.length > 0 })}
       >
         <button className="btn-reset" onClick={() => onAddTodo?.()}>
           新增
