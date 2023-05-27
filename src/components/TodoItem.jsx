@@ -4,6 +4,7 @@ import {
   CheckCircleIcon,
   CheckHoverIcon,
 } from 'assets/images';
+import clsx from 'clsx';
 
 const StyledTaskItem = styled.div`
   min-height: 52px;
@@ -100,15 +101,15 @@ const StyledTaskItem = styled.div`
   }
 `;
 
-const TodoItem = (
-  todo,  // 帶進資料
-  onToggleDone, // 是否完成的狀態
+const TodoItem = ({
+  todo, // 帶進資料
   onSave, // 儲存資料
+  onToggleDone, // 是否完成的狀態
   onDelete, // 刪除
   onChangeMode, // 切換成編輯狀態
-  ) => {
+}) => {
   return (
-    <StyledTaskItem>
+    <StyledTaskItem className={clsx('', { done: todo.isDone })}>
       <div className="task-item-checked">
         <span className="icon icon-checked" />
       </div>
