@@ -111,7 +111,10 @@ const TodoItem = ({
   return (
     <StyledTaskItem className={clsx('', { done: todo.isDone })}>
       <div className="task-item-checked">
-        <span className="icon icon-checked" />
+        <span
+          className="icon icon-checked"
+          onClick={() => onToggleDone?.(todo.id)}
+        />
       </div>
       <div className="task-item-body">
         <span className="task-item-body-text">{todo.title}</span>
