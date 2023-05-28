@@ -91,6 +91,22 @@ const TodoPage = () => {
       });
     });
   };
+  const handleSave = ({ id, title }) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            id,
+            title,
+            isEdit: false,
+          };
+        }
+
+        return todo;
+      });
+    });
+  };
   return (
     <div>
       TodoPage
@@ -103,6 +119,7 @@ const TodoPage = () => {
       />
       <TodoCollection
         todos={todos}
+        onSave={handleSave}
         onToggleDone={handleToggleDone}
         onChangeMode={handleChangeMode}
       />
