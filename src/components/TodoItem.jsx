@@ -137,7 +137,7 @@ const TodoItem = ({
         <input
           ref={inputRef}
           className="task-item-body-input"
-          value={todo.title}
+          defaultValue={todo.title}
           onKeyDown={handleKeyDown}
         />
       </div>
