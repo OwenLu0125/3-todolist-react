@@ -100,7 +100,7 @@ const StyledTaskItem = styled.div`
     }
   }
 `;
-
+// todo.isEdit
 const TodoItem = ({
   todo, // 帶進資料
   onSave, // 儲存資料
@@ -109,16 +109,23 @@ const TodoItem = ({
   onChangeMode, // 切換成編輯狀態
 }) => {
   return (
-    <StyledTaskItem className={clsx('', { done: todo.isDone })}>
+    <StyledTaskItem
+      className={clsx('', { done: todo.isDone, edit: todo.isEdit })}
+    >
       <div className="task-item-checked">
         <span
           className="icon icon-checked"
           onClick={() => onToggleDone?.(todo.id)}
         />
       </div>
-      <div className="task-item-body">
+      <div
+        className="task-item-body"
+        onDoubleClick={() => {
+          onChangeMode?.({ id: todo.id, isEdit: true });
+        }}
+      >
         <span className="task-item-body-text">{todo.title}</span>
-        <input className="task-item-body-input" />
+        <input className="task-item-body-input" value={todo.title}/>
       </div>
       <div className="task-item-action ">
         <button className="btn-reset btn-destroy icon"></button>
