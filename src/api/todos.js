@@ -10,8 +10,19 @@ export const getTodos = async () => {
     console.error('[Get Todos failed]: ', error);
   }
 };
-const createTodo = () => {};
+export const createTodo = async (payload) => {
+  const { title, isDone } = payload;
 
+  try {
+    const res = await axios.post(`${baseUrl}/todos`, {
+      title,
+      isDone,
+    });
+    return res.data;
+  } catch (error) {
+    console.error('[Create Todo failed]: ', error);
+  }
+};
 const patchTodo = () => {};
 
 const deleteTodo = () => {};
