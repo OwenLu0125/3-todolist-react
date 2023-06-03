@@ -1,7 +1,7 @@
 import { Footer, Header, TodoCollection, TodoInput } from 'components';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getTodos } from 'api/todos';
+import { getTodos, createTodo } from 'api/todos';
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState('');
@@ -12,37 +12,53 @@ const TodoPage = () => {
     setInputValue(value);
   };
 
-  const handleAddTodo = () => {
+  const handleAddTodo = async () => {
     if (inputValue.length === 0) {
       return;
     }
-    setTodos((prevTodos) => {
-      return [
-        ...prevTodos,
-        {
-          id: Math.random() * 100,
-          title: inputValue,
-          isDone: false,
-        },
-      ];
-    });
-    setInputValue('');
+    try {
+      const data = createTodo({
+        title: inputValue,
+        isDone: false,
+      });
+      setTodos((prevTodos) => {
+        return [
+          ...prevTodos,
+          {
+            id: Math.random() * 100,
+            title: inputValue,
+            isDone: false,
+          },
+        ];
+      });
+      setInputValue('');
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const handleKeyDown = () => {
+  const handleKeyDown = async () => {
     if (inputValue.length === 0) {
       return;
     }
-    setTodos((prevTodos) => {
-      return [
-        ...prevTodos,
-        {
-          id: Math.random() * 100,
-          title: inputValue,
-          isDone: false,
-        },
-      ];
-    });
-    setInputValue('');
+    try {
+      const data = createTodo({
+        title: inputValue,
+        isDone: false,
+      });
+      setTodos((prevTodos) => {
+        return [
+          ...prevTodos,
+          {
+            id: Math.random() * 100,
+            title: inputValue,
+            isDone: false,
+          },
+        ];
+      });
+      setInputValue('');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleToggleDone = (id) => {
