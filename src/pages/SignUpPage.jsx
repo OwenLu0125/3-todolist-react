@@ -7,6 +7,7 @@ import {
 import { ACLogoIcon } from 'assets/images';
 import { AuthInput } from 'components';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,6 @@ const SignUpPage = () => {
         <ACLogoIcon />
       </div>
       <h1>建立您的帳號</h1>
-
       <AuthInputContainer>
         <AuthInput
           label="帳號"
@@ -27,7 +27,6 @@ const SignUpPage = () => {
           onChange={(nameInputValue) => setUsername(nameInputValue)}
         />
       </AuthInputContainer>
-
       <AuthInputContainer>
         <AuthInput
           label="Email"
@@ -36,7 +35,6 @@ const SignUpPage = () => {
           onChange={(emailInputValue) => setEmail(emailInputValue)}
         />
       </AuthInputContainer>
-
       <AuthInputContainer>
         <AuthInput
           type="password"
@@ -47,7 +45,9 @@ const SignUpPage = () => {
         />
       </AuthInputContainer>
       <AuthButton>註冊</AuthButton>
-      <AuthLinkText>取消</AuthLinkText>
+      <Link to="/login">
+        <AuthLinkText>取消</AuthLinkText>
+      </Link>
     </AuthContainer>
   );
 };
