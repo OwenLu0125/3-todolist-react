@@ -1,4 +1,3 @@
-import { createContext, useState } from 'react';
 import { login, register, checkPermission } from 'api/auth';
 import { createContext, useState, useEffect } from 'react';
 import * as jwt from 'jsonwebtoken';

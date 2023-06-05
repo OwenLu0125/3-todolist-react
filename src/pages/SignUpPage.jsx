@@ -36,7 +36,6 @@ const SignUpPage = () => {
       password,
     });
     if (success) {
-      localStorage.setItem('authToken', authToken);
       Swal.fire({
         position: 'top',
         title: '註冊成功！',
